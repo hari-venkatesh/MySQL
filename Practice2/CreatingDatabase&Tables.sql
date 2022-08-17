@@ -1,5 +1,6 @@
 CREATE DATABASE exercise2;
 
+
 CREATE TABLE exercise2.customer (
 	cus_id INT(10)
 	,first_name VARCHAR(20) NOT NULL
@@ -14,6 +15,7 @@ CREATE TABLE exercise2.customer (
 			REFERENCES exercise2.product(prod_id)
 			ON DELETE CASCADE
 );
+
 
 
 CREATE TABLE exercise2.product (
