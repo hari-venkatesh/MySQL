@@ -59,6 +59,7 @@ CREATE TABLE exercise3.college_department (
    ,FOREIGN KEY (college_id)
         REFERENCES exercise3.college(id)
         ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 ------------------------------------------------------------------------
@@ -166,4 +167,65 @@ CREATE TABLE exercise3.semester_result (
    ,`grade`           VARCHAR(2)   NOT NULL
    ,`credits`         FLOAT        NOT NULL
    ,`result_date`     DATE         NOT NULL
+);
+
+--------------------------------------------------------------------------
+
+CREATE TABLE exercise3.college_departments (
+    PRIMARY KEY (cdept_id)
+   ,`cdept_id`        INT
+   ,`udept_code`      CHAR(4)
+   ,FOREIGN KEY (udept_code)
+        REFERENCES exercise3.department(dept_code)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+   ,`college_id`      INT
+   ,FOREIGN KEY (college_id)
+        REFERENCES exercise3.college(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+---------------------------------------------------------------------------
+
+CREATE TABLE exercise3.semester_fees (
+    `cdept_id`        INT
+   ,FOREIGN KEY (cdept_id)
+        REFERENCES exercise3.college_departments(cdept_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+   ,`stud_id`      INT
+   ,FOREIGN KEY (stud_id)
+        REFERENCES exercise3.students(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+   ,`semester`        TINYINT      NOT NULL
+   ,`amount`          DOUBLE(18,2) NULL
+   ,`paid_year`       YEAR(4)      NULL
+   ,`paid_status`     VARCHAR(10)  NOT NULL
+);
+
+-----------------------------------------------------------------------------
+
+CREATE TABLE exercise3.students (
+    PRIMARY KEY (id)
+   ,`id`              INT
+   ,`roll_number`     CHAR(8)      NOT NULL
+   ,`name`            VARCHAR(100) NOT NULL
+   ,`dob`             DATE         NOT NULL
+   ,`gender`          CHAR(1)      NOT NULL
+   ,`email`           VARCHAR(50)  NOT NULL
+   ,`phone`           BIGINT       NOT NULL
+   ,`address`         VARCHAR(200) NOT NULL
+   ,`academic_year`   YEAR(4)
+   ,`cdept_id`        INT
+   ,FOREIGN KEY (cdept_id)
+        REFERENCES exercise3.college_departments(cdept_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+   ,`college_id`      INT
+   ,FOREIGN KEY (college_id)
+        REFERENCES exercise3.college(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
