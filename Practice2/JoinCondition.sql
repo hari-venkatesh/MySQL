@@ -3,8 +3,8 @@ SELECT first_name
 	,last_nmae
     ,dob
     ,prod_name
-FROM exercise2.customer
-CROSS JOIN exercise2.product
+FROM exercise2.product
+CROSS JOIN exercise2.customer
 WHERE customer.prod_id = product.prod_id;
 
 ------------------------------------------------------------------------
