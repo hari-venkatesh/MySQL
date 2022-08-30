@@ -14,7 +14,7 @@ CREATE TABLE exercise3.university (
 CREATE TABLE exercise3.designation (
     PRIMARY KEY (id)
    ,`id`              INT
-   ,`name`            VARCHAR(30)  NOT NULL
+   ,`name`            VARCHAR(40)  NOT NULL
    ,`rank`            CHAR(1)      NOT NULL
 );
 
