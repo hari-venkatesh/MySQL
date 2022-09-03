@@ -15,6 +15,7 @@ CREATE TABLE exercise1.employee (
    ,FOREIGN KEY (department_id)
         REFERENCES exercise1.department(id)
         ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 -- 1. create department table
